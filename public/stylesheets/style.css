@@ -1,7 +1,24 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html {
+  margin: 0;
+  padding: 0;
 }
+
+nav ul {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+
+nav {
+  background: red;
+  margin: 0;
+}
+
 
 a {
   color: #00B7FF;
