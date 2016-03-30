@@ -6,9 +6,13 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var stylus = require("stylus");
 var nib = require("nib");
+var mongoose = require('mongoose');
+
+mongoose.connect("mongodb://localhost/express_post");
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var posts = require('./routes/posts');
 
 var app = express();
 
@@ -33,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/posts', posts);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,6 +48,15 @@ app.use(function(req, res, next) {
 
 
 app.locals.basedir = path.join(__dirname, "views");
+
+app.locals.body_preview = function(body) {
+  var output = body;
+  if(body.length > 140) {
+    output =  body.substring(0, 137);
+    output += "..."
+  }
+  return output;
+} 
 
 // error handlers
 

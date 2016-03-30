@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  form(action="/posts/new" method="post" class="new_post")
+    
+    label(for="title_input") Title
+    input(type="text" name="title" id="title_input" required)
+    
+    br 
+
+    label(for="image_input") Image URL
+    input(type="url" name="image" id="image_input")
+    
+    br
+
+    label(for="body_input") Body 
+    textarea(name="body" id="body_input" required)
+
+    input(type="submit" value="Submit Post" class="green_bkg")
+

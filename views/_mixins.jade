@@ -2,7 +2,14 @@ mixin navbar
   nav
     ul
       li
-        a(href="/") Home
+        a(href="/")
+          h1.nav_title Post It
+      li
         a(href="/categories") Categories
+      li
         a(href="Log in") Log in
+      li
         a(href="/users:user_id") Profile
+
+mixin button(text, clas)
+  button(class="button #{clas}")= text
