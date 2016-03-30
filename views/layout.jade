@@ -1,0 +1,10 @@
+include ./mixins
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    +navbar
+    block content
+    script(src="javascripts/vendor/all.js")

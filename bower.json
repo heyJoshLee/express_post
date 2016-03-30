@@ -1,0 +1,23 @@
+{
+  "name": "express_post",
+  "description": "",
+  "main": "",
+  "authors": [
+    "jleewebdev <lee45276@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.2",
+    "bootstrap": "^3.3.6",
+    "normalize-css": "normalize.css#^4.0.0"
+  }
+}
