@@ -11,6 +11,15 @@ function slugify(title) {
   return slugged;
 }
 
+router.get("/:slug", function(req, res, next) {
+  Post.findOne({slug: req.params["slug"]}, function(err, doc) {
+    res.render("posts_show", {
+      title: doc.title,
+      post: doc
+    })
+  });
+});
+
 router.get("/", function(req, res, next) {
   res.redirect("/");
 });
