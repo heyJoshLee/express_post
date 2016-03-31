@@ -14,6 +14,9 @@ var postSchema = mongoose.Schema({
   author: {
     type: String
   },
+  slug: {
+    type: String
+  },
   created_at: {
     type: Date,
     default: Date.now
@@ -21,3 +24,14 @@ var postSchema = mongoose.Schema({
 });
 
 var Post = module.exports = mongoose.model('Post', postSchema);
+
+
+// Get user by id
+module.exports.getPostById = function(id, callback){
+  Post.findById(id, callback);
+}
+
+// Get user by username
+module.exports.getPostBySlug = function(slug, callback){
+  Post.findOne({slug: slug}, callback);
+}

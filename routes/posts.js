@@ -3,6 +3,14 @@ var router = express.Router();
 var Post = require("../models/post.js");
 
 /* Redirect to home page. */
+
+
+function slugify(title) {
+  var slugged = title.replace(/[^a-zA-Z\d]/g, "-");
+  slugged = slugged.replace(/-{2,}/g, "-");
+  return slugged;
+}
+
 router.get("/", function(req, res, next) {
   res.redirect("/");
 });
@@ -19,10 +27,13 @@ router.post("/new", function(req, res, next) {
       image = req.body["image"],
       body = req.body["body"];
 
+      var slug = slugify(title);
+
   var post = {
     title: title,
     image: image,
     body: body,
+    slug: slug,
     created_at: new Date(),
     author: "Unknown"
   };
@@ -35,7 +46,7 @@ router.post("/new", function(req, res, next) {
       console.log(doc)
       res.redirect("/");
     }
-  });
+  });  
 
 });
 
