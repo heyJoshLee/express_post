@@ -71,7 +71,7 @@ form.new_category
     margin: 10px 0
     font-size: 24px
 
-.post
+.post_preview
   background: snow
   img
     float: left
@@ -79,7 +79,33 @@ form.new_category
     height: 100px
     display: block
     margin-right: 40px
-    &:after
-      content: ""
-      display: block
-      cleAR: both
+  &:after
+    content: ""
+    display: block
+    clear: both
+      
+
+.categories_tags
+  .category_tag
+    +
+      .category_tag
+        margin-left: 5px
+        &:before 
+          display: inline-block
+          content: "|"
+          margin-right: 5px
+    &hover
+      text-decoration: underline !important
+
+.post
+  margin: 0 auto
+  max-width: 1000px
+  text-align: center
+  .post_body
+    text-align: justify
+    border-radius: 10px
+    padding: 10px 40px
+    background: snow
+
+
+

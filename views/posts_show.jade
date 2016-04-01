@@ -1,6 +1,9 @@
 extends layout
 
 block content
-  h1= post.title
-  img(src="#{post.image}", alt="post.title")
-  h2=post.body
+  .post
+    h1.post_title= post.title
+    img.post_image(src="#{post.image}", alt="post.title")
+    h2.post_body=post.body
+    p Categories:
+    +categories_tags(post.categories)

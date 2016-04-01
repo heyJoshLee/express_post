@@ -13,3 +13,18 @@ mixin navbar
 
 mixin button(text, clas)
   button(class="button #{clas}")= text
+
+mixin categories_tags(categories)
+  categories_tags
+        each category in categories
+            small 
+              a.category_tag(href="/categories/#{category}")= category
+
+mixin post_preview(post)
+  .post_preview
+    a(href="/posts/#{post.slug}")
+      img(src="#{post.image}", alt="post.title")
+    h2 
+      a(href="/posts/#{post.slug}")= post.title
+    p= body_preview(post.body)
+    +categories_tags(post.categories)

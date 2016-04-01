@@ -5,9 +5,4 @@ block content
   a(href="/posts/new")
     +button("New Post", "green_bkg")
   each post in posts
-    .post
-      a(href="/posts/#{post.slug}")
-        img(src="#{post.image}", alt="post.title")
-      h2 
-        a(href="/posts/#{post.slug}")= post.title
-      p= body_preview(post.body)
+    +post_preview(post)

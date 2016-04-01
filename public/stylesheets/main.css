@@ -90,18 +90,40 @@ form.new_category textarea {
   margin: 10px 0;
   font-size: 24px;
 }
-.post {
+.post_preview {
   background: #fffafa;
 }
-.post img {
+.post_preview img {
   float: left;
   padding: 10px;
   height: 100px;
   display: block;
   margin-right: 40px;
 }
-.post img:after {
+.post_preview:after {
   content: "";
   display: block;
-  cleAR: both;
+  clear: both;
+}
+.categories_tags .category_tag + .category_tag {
+  margin-left: 5px;
+}
+.categories_tags .category_tag + .category_tag:before {
+  display: inline-block;
+  content: "|";
+  margin-right: 5px;
+}
+.categories_tags .category_taghover {
+  text-decoration: underline !important;
+}
+.post {
+  margin: 0 auto;
+  max-width: 1000px;
+  text-align: center;
+}
+.post .post_body {
+  text-align: justify;
+  border-radius: 10px;
+  padding: 10px 40px;
+  background: #fffafa;
 }
