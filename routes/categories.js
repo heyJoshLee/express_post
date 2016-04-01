@@ -30,6 +30,7 @@ router.post('/new', function(req, res, next) {
       console.log(err);
       return;
     } else {
+      req.flash('success', 'Category successfully created');
       res.redirect("/categories");
     }
   });

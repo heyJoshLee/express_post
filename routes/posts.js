@@ -32,6 +32,21 @@ router.get('/new', function(req, res, next) {
   });
 });
 
+router.post("/delete/:slug", function(req, res, next) {
+  var slug  = req.body.slug;
+
+  Post.remove({slug: slug}, function(err, doc) {
+    if (err) {
+      console.log(err)
+      return;
+    } else {
+      req.flash('success', 'Post successfully deleted');
+
+      res.redirect("/");
+    }
+  });
+});
+
 router.get("/:slug", function(req, res, next) {
   Post.findOne({slug: req.params["slug"]}, function(err, doc) {
     res.render("posts_show", {
@@ -68,7 +83,8 @@ router.post("/new", function(req, res, next) {
       console.log(err);
     } else {
       console.log("Saved");
-      console.log(doc)
+      console.log(doc);
+      req.flash('success', 'Post successfully created');
       res.redirect("/");
     }
   });  

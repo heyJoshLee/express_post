@@ -4,8 +4,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 var stylus = require("stylus");
 var nib = require("nib");
+var flash = require('connect-flash');
+var session = require('express-session');
+
 var mongoose = require('mongoose');
 
 mongoose.connect("mongodb://localhost/express_post");
@@ -36,10 +40,30 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+  secret: "mykey",
+  saveUninitialized: true,
+  resave: true
+}));
+
+app.use(require('connect-flash')());
+app.use(function (req, res, next) {
+  res.locals.messages = require('express-messages')(req, res);
+  next();
+});
+
+app.use(function(req, res, next){
+    res.locals.success_messages = req.flash('success');
+    res.locals.error_messages = req.flash('error');
+    next();
+});
+
 app.use('/', routes);
 app.use('/users', users);
 app.use('/posts', posts);
 app.use('/categories', categories);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

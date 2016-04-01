@@ -59,9 +59,7 @@ form.new_category
       border: 1px solid rgba(0, 0, 0, 0.2)
     &[type="submit"]
       height: 40px
-      &hover
-        cursor: pointer
-    
+        
   textarea
     display: block
     width: 100%
@@ -86,10 +84,10 @@ form.new_category
       
 
 .categories_tags
-  .category_tag
+  small
     +
-      .category_tag
-        margin-left: 5px
+      small
+        margin-left: 10px
         &:before 
           display: inline-block
           content: "|"
@@ -106,6 +104,34 @@ form.new_category
     border-radius: 10px
     padding: 10px 40px
     background: snow
+
+
+.delete_button
+  background: rgba(192, 57, 43, 1)
+  border: none
+  width: 200px
+  height: 40px
+  border-radius: 8px
+  color: snow
+  font-size: 24px
+  &:hover
+    cursor: pointer
+
+.flash
+  padding: 10px
+  font-size: 18px
+  border-radius: 10px
+
+.success_messages
+  background: rgba(0, 177, 106, 0.3)
+  color: green
+
+.error_messages
+  background: rgba(236,100,75, 0.3)  
+  color: rgba(150, 40, 27, 1);
+
+
+
 
 
 

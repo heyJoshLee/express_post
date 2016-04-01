@@ -15,7 +15,7 @@ mixin button(text, clas)
   button(class="button #{clas}")= text
 
 mixin categories_tags(categories)
-  categories_tags
+  .categories_tags
         each category in categories
             small 
               a.category_tag(href="/categories/#{category}")= category

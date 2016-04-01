@@ -76,10 +76,6 @@ form.new_post input[type="submit"],
 form.new_category input[type="submit"] {
   height: 40px;
 }
-form.new_post input[type="submit"]hover,
-form.new_category input[type="submit"]hover {
-  cursor: pointer;
-}
 form.new_post textarea,
 form.new_category textarea {
   display: block;
@@ -105,15 +101,15 @@ form.new_category textarea {
   display: block;
   clear: both;
 }
-.categories_tags .category_tag + .category_tag {
-  margin-left: 5px;
+.categories_tags small + small {
+  margin-left: 10px;
 }
-.categories_tags .category_tag + .category_tag:before {
+.categories_tags small + small:before {
   display: inline-block;
   content: "|";
   margin-right: 5px;
 }
-.categories_tags .category_taghover {
+.categories_tags smallhover {
   text-decoration: underline !important;
 }
 .post {
@@ -126,4 +122,29 @@ form.new_category textarea {
   border-radius: 10px;
   padding: 10px 40px;
   background: #fffafa;
+}
+.delete_button {
+  background: #c0392b;
+  border: none;
+  width: 200px;
+  height: 40px;
+  border-radius: 8px;
+  color: #fffafa;
+  font-size: 24px;
+}
+.delete_button:hover {
+  cursor: pointer;
+}
+.flash {
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 10px;
+}
+.success_messages {
+  background: rgba(0,177,106,0.3);
+  color: #008000;
+}
+.error_messages {
+  background: rgba(236,100,75,0.3);
+  color: #96281b;
 }

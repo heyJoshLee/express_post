@@ -6,5 +6,18 @@ html
     link(rel='stylesheet', href='/stylesheets/main.css')
   body
     +navbar
+    if (success_messages.length > 0)
+      .success_messages.flash
+        ul
+          each msg in success_messages
+            li= msg
+
+    if (error_messages.length > 0)
+      .error_messages.flash
+        ul
+          each msg in error_messages
+            li= msg
+
     block content
     script(src="/javascripts/vendor/all.js")
+    script(src="/javascripts/main.js")
