@@ -11,15 +11,6 @@ function slugify(title) {
   return slugged;
 }
 
-router.get("/:slug", function(req, res, next) {
-  Post.findOne({slug: req.params["slug"]}, function(err, doc) {
-    res.render("posts_show", {
-      title: doc.title,
-      post: doc
-    })
-  });
-});
-
 router.get("/", function(req, res, next) {
   res.redirect("/");
 });
@@ -29,6 +20,17 @@ router.get("/", function(req, res, next) {
 router.get('/new', function(req, res, next) {
   res.render('posts_new', { title: 'New Post' });
 });
+
+router.get("/:slug", function(req, res, next) {
+  Post.findOne({slug: req.params["slug"]}, function(err, doc) {
+    res.render("posts_show", {
+      title: doc.title,
+      post: doc
+    })
+  });
+});
+
+
 
 // Create new Post
 router.post("/new", function(req, res, next) {
