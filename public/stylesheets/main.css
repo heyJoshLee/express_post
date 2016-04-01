@@ -44,32 +44,44 @@ button {
   background: #2ecc71;
   color: #fffafa;
 }
-form.new_post {
+form.new_post,
+form.new_category {
   margin: 0 auto;
   width: 800px;
 }
-form.new_post label {
+form.new_post label,
+form.new_category label {
   display: block;
   font-size: 24px;
 }
-form.new_post input {
+form.new_post label.category_tag,
+form.new_category label.category_tag {
+  display: inline-block;
+}
+form.new_post input,
+form.new_category input {
   width: 100%;
   border-radius: 8px;
   font-size: 24px;
 }
 form.new_post input[type="text"],
-form.new_post input[type="url"] {
+form.new_category input[type="text"],
+form.new_post input[type="url"],
+form.new_category input[type="url"] {
   margin: 20px 0;
   height: 30px;
   border: 1px solid rgba(0,0,0,0.2);
 }
-form.new_post input[type="submit"] {
+form.new_post input[type="submit"],
+form.new_category input[type="submit"] {
   height: 40px;
 }
-form.new_post input[type="submit"]hover {
+form.new_post input[type="submit"]hover,
+form.new_category input[type="submit"]hover {
   cursor: pointer;
 }
-form.new_post textarea {
+form.new_post textarea,
+form.new_category textarea {
   display: block;
   width: 100%;
   height: 100px;

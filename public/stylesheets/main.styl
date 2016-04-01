@@ -39,12 +39,15 @@ button
   background: rgba(46, 204, 113,1.0)
   color: snow
   
-form.new_post
+form.new_post,
+form.new_category
   margin: 0 auto
   width: 800px
   label
     display: block
     font-size: 24px
+    &.category_tag
+      display: inline-block
   input
     width: 100%
     border-radius: 8px
@@ -58,6 +61,7 @@ form.new_post
       height: 40px
       &hover
         cursor: pointer
+    
   textarea
     display: block
     width: 100%

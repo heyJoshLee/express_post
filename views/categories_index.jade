@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  a(href="/categories/new")
+    +button("New Category", "green_bkg")
+  each category in categories
+    .category
+      a(href="/categories/#{category.name}")
+        h1= category.name
+      

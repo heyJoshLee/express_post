@@ -17,6 +17,7 @@ var postSchema = mongoose.Schema({
   slug: {
     type: String
   },
+  categories: [String],
   created_at: {
     type: Date,
     default: Date.now

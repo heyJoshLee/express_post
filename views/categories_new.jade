@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  form(action="/categories/new" method="post" class="new_category")
+    
+    label(for="name_input") Name
+    input(type="text" name="name" id="name_input" required)
+
+    input(type="submit" value="Submit Post" class="green_bkg")
+

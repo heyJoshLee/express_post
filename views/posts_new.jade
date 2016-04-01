@@ -16,5 +16,9 @@ block content
     label(for="body_input") Body 
     textarea(name="body" id="body_input" required)
 
+    each category in categories
+        label.category_tag= category.name
+            input(type="checkbox" name="categories[]" value="#{category.name}")
+
     input(type="submit" value="Submit Post" class="green_bkg")
 
