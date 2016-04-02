@@ -5,11 +5,9 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/main.css')
   body
-    +navbar
+    +navbar(user)
     +errors(errors)
     +flash_messages(success_messages, error_messages)
-
-    
 
     block content
     script(src="/javascripts/vendor/all.js")

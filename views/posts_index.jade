@@ -2,7 +2,8 @@ include /_mixins
 extends layout
 
 block content
-  a(href="/posts/new")
-    +button("New Post", "green_bkg")
+  if user
+    a(href="/posts/new")
+      +button("New Post", "green_bkg")
   each post in posts
     +post_preview(post)

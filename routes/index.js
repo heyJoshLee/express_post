@@ -14,12 +14,17 @@ router.get('/', function(req, res, next) {
       }
       res.render('posts_index', { 
       title: 'Post It',
-      posts: doc,
-      user: req.user
-    });
+      posts: doc
+      });
 
   });
 
+});
+
+router.get("/login", function(req, res, next) {
+  res.render("login", {
+    title: "Log in"
+  })
 });
 
 router.get("/register", function(req, res, next) {
@@ -60,6 +65,18 @@ router.get("/logout", function(req, res, next) {
   res.redirect("/");
 });
 
+
+router.post("/login", function(req, res, next) {
+  var username = req.body.username,
+      password = req.body.password;
+
+     passport.authenticate("local-login", {
+       successRedirect: "/",
+       failureRedirect: "/login",
+       successFlash: true,
+       failureFlash: true
+      })(req, res, next);
+});
 
 
 module.exports = router;

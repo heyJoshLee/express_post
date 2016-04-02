@@ -6,12 +6,14 @@ mixin navbar
           h1.nav_title Post It
       li
         a(href="/categories") Categories
-      li
-        a(href="/login") Log in
-      li
-        a(href="/register") Register
-      li
-        a(href="/users:user_id") Profile
+      if user
+        li
+          a(href="/logout") Log out
+      else
+        li
+          a(href="/register") Register
+        li
+          a(href="/login") Log in
 
 mixin button(text, clas)
   button(class="button #{clas}")= text
@@ -29,6 +31,7 @@ mixin post_preview(post)
     h2 
       a(href="/posts/#{post.slug}")= post.title
     p= body_preview(post.body)
+    small On #{post.created_at} by #{post.author}
     +categories_tags(post.categories)
 
 mixin errors(errors)

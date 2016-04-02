@@ -46,24 +46,28 @@ button {
 }
 form.new_post,
 form.new_category,
-form.register {
+form.register,
+form.login {
   margin: 0 auto;
   width: 800px;
 }
 form.new_post label,
 form.new_category label,
-form.register label {
+form.register label,
+form.login label {
   display: block;
   font-size: 24px;
 }
 form.new_post label.category_tag,
 form.new_category label.category_tag,
-form.register label.category_tag {
+form.register label.category_tag,
+form.login label.category_tag {
   display: inline-block;
 }
 form.new_post input,
 form.new_category input,
-form.register input {
+form.register input,
+form.login input {
   width: 100%;
   border-radius: 8px;
   font-size: 24px;
@@ -71,21 +75,26 @@ form.register input {
 form.new_post input[type="text"],
 form.new_category input[type="text"],
 form.register input[type="text"],
+form.login input[type="text"],
 form.new_post input[type="url"],
 form.new_category input[type="url"],
-form.register input[type="url"] {
+form.register input[type="url"],
+form.login input[type="url"] {
   margin: 20px 0;
   height: 30px;
   border: 1px solid rgba(0,0,0,0.2);
 }
 form.new_post input[type="submit"],
 form.new_category input[type="submit"],
-form.register input[type="submit"] {
+form.register input[type="submit"],
+form.login input[type="submit"] {
+  margin-top: 10px;
   height: 40px;
 }
 form.new_post textarea,
 form.new_category textarea,
-form.register textarea {
+form.register textarea,
+form.login textarea {
   display: block;
   width: 100%;
   height: 100px;

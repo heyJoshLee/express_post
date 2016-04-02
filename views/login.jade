@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1 Login
+  form(action="/login" method="post" class="login")
+    label(for="Username_register") Username
+      input(type="text" id="username_login" name="username")
+
+    label(for="password_register") Password
+      input(type="password" id="password_login" name="password")
+
+    input(type="submit" value="Log in" class="green_bkg")
+

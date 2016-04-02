@@ -4,40 +4,40 @@ var bcrypt = require('bcryptjs');
 
 module.exports = function(passport){
   passport.serializeUser(function(user, done) {
-      done(null, user.id);
+      done(null, user.username);
   });
 
-  passport.deserializeUser(function(id, done) {
-      User.find(id, function(err, user) {
+  passport.deserializeUser(function(username, done) {
+      User.findOne({username: username}, function(err, user) {
         done(err, user);
       });
   });
 
-  // // Login
-  // passport.use('local-login', new LocalStrategy({
-  //   passReqToCallback: true
-  // },
-  // function(req, username, password, done){
-  //   User.getUserByUsername(username, function(err, user){
-  //     if(err){
-  //       return done(err);
-  //     }
-  //     // Does user Exist?
-  //     if(!user){
-  //       req.flash('error','User Not Found');
-  //       return done(null, false);
-  //     }
-  //     // Is Password Valid?
-  //     if(!isValidPassword(user, password)){
-  //       req.flash('error','Invalid Password');
-  //       return done(null, false);
-  //     }
+  // Login
+  passport.use('local-login', new LocalStrategy({
+     passReqToCallback: true
+   },
+   function(req, username, password, done){
+     User.findOne({ username: username }, function(err, user){
+       if(err){
+         return done(err);
+       }
+       // Does user Exist?
+       if(!user){
+         req.flash('error','User Not Found');
+         return done(null, false);
+       }
+       // Is Password Valid?
+       if(!isValidPassword(user, password)){
+         req.flash('error','Invalid Password');
+         return done(null, false);
+       }
 
-  //     req.flash('success','You are now logged in');
-  //     return done(null, user);
-  //   });
-  // }
-  // ));
+       req.flash('success','You are now logged in');
+       return done(null, user);
+     });
+   }
+   ));
 
   // Register
   passport.use('local-register', new LocalStrategy({
@@ -66,7 +66,7 @@ module.exports = function(passport){
             // Add User
             User.create(newUser, function(err, user){
               if(err){
-                console.log('Error: '+err);
+                console.log('Error: '+ err);
                 throw err;
               } else {
                 req.flash('success','You are now registered and logged in');
