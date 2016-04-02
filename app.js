@@ -60,28 +60,6 @@ app.use(function(req, res, next){
     next();
 });
 
-app.locals.formatDate = function(date) {
-  var week = ["Sunday", "Monday", "Tuesday", "Wednesday",
-              "Thursday", "Friday", "Saturday", "Sunday"],
-      months = ["January", "February", "March", "April", "May",
-                "June", "July", "August", "September", "October",
-                "November", "December"];
-
-  function formatDay(num) {
-    var output = "";
-    if ([1, 21, 31].indexOf(num) != -1 ) {
-      return num.toString() += "st"
-    } else if ([2, 22].indexOf(num) != -1) {
-      return num.toString() += "nd"
-    } else if (num === 3) {
-      return num.toString() += "rd";
-    } else {
-      return num.toString() += "th"
-    }
-  }
-
-  return months[date.getMonth()] +  formatDaty(date.getDay()) + date.getFullYear() + date.getTime();
-} 
 
 app.use(expressValidator({
   errorFormatter: function(param, msg, value) {

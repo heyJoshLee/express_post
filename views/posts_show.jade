@@ -3,6 +3,7 @@ extends layout
 block content
   .post
     h1.post_title= post.title
+    h4 By #{post.author}
     img.post_image(src="#{post.image}", alt="post.title")
     h2.post_body=post.body
 

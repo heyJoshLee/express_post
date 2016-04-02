@@ -117,7 +117,7 @@ router.post("/new", function(req, res, next) {
     slug: slug,
     categories: categories,
     created_at: new Date(),
-    author: "Unknown"
+    author: req.user.username
   };
 
   Post.create(post, function(err, doc) {
