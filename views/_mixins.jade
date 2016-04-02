@@ -7,7 +7,9 @@ mixin navbar
       li
         a(href="/categories") Categories
       li
-        a(href="Log in") Log in
+        a(href="/login") Log in
+      li
+        a(href="/register") Register
       li
         a(href="/users:user_id") Profile
 
@@ -28,3 +30,23 @@ mixin post_preview(post)
       a(href="/posts/#{post.slug}")= post.title
     p= body_preview(post.body)
     +categories_tags(post.categories)
+
+mixin errors(errors)
+  if errors
+        .error_messages.flash
+          ul
+            each error in errors
+               li= error.msg
+
+mixin flash_messages(success_messages, error_messages)
+  if (success_messages && success_messages.length > 0)
+    .success_messages.flash
+      ul
+        each msg in success_messages
+          li= msg
+
+  if (error_messages && error_messages.length > 0)
+    .error_messages.flash
+      ul
+        each msg in error_messages
+          li= msg

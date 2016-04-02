@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1 Register
+  form(action="/register" method="post" class="register")
+    label(for="Username_register") Username
+      input(type="text" id="username_register" name="username")
+
+    label(for="password_register") Password
+      input(type="password" id="password_register" name="password")
+
+    label(for="password_register2") Confirm Password
+      input(type="password" id="password_register2" name="password2")
+
+    input(type="submit" value="Create New Account" class="green_bkg")
+

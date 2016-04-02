@@ -12,7 +12,8 @@ router.get("/", function(req, res, next) {
       return;
     } else {
       res.render("categories_index", {
-        categories: doc
+        categories: doc,
+        user: req.session.user
       });
     }
   });

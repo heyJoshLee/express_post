@@ -40,7 +40,8 @@ button
   color: snow
   
 form.new_post,
-form.new_category
+form.new_category,
+form.register
   margin: 0 auto
   width: 800px
   label
@@ -59,7 +60,6 @@ form.new_category
       border: 1px solid rgba(0, 0, 0, 0.2)
     &[type="submit"]
       height: 40px
-        
   textarea
     display: block
     width: 100%
@@ -68,6 +68,16 @@ form.new_category
     border-radius: 8px
     margin: 10px 0
     font-size: 24px
+
+form.register
+  width: 500px
+  input
+    margin: 10px 0
+    height: 40px
+    &[type="submit"]
+      background: green
+
+
 
 .post_preview
   background: snow

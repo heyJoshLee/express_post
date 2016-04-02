@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var expressValidator = require('express-validator');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
@@ -9,10 +10,12 @@ var stylus = require("stylus");
 var nib = require("nib");
 var flash = require('connect-flash');
 var session = require('express-session');
-
+var passport = require("passport");
 var mongoose = require('mongoose');
 
 mongoose.connect("mongodb://localhost/express_post");
+
+require('./config/passport')(passport);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -36,7 +39,7 @@ app.use(stylus.middleware({
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -46,17 +49,33 @@ app.use(session({
   resave: true
 }));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(require('connect-flash')());
-app.use(function (req, res, next) {
-  res.locals.messages = require('express-messages')(req, res);
-  next();
-});
 
 app.use(function(req, res, next){
     res.locals.success_messages = req.flash('success');
     res.locals.error_messages = req.flash('error');
     next();
 });
+
+app.use(expressValidator({
+  errorFormatter: function(param, msg, value) {
+      var namespace = param.split('.')
+      , root    = namespace.shift()
+      , formParam = root;
+
+    while(namespace.length) {
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {
+      param : formParam,
+      msg   : msg,
+      value : value
+    };
+  }
+}));
 
 app.use('/', routes);
 app.use('/users', users);
