@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1 All Posts by #{preview_user}
+  a(href="/posts/new")
+    +button("New Post", "green_bkg")
+  each post in posts
+    +post_preview(post)

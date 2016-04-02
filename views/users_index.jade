@@ -1,0 +1,8 @@
+include /_mixins
+extends layout
+
+block content
+  ul
+    each user in users
+      li(class="user_preview")
+        a(href="/users/#{user.username}")= user.username

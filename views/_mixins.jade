@@ -9,6 +9,9 @@ mixin navbar
       if user
         li
           a(href="/logout") Log out
+        li(class="right")
+          a(href="/profile")= user.username
+
       else
         li
           a(href="/register") Register
@@ -31,7 +34,8 @@ mixin post_preview(post)
     h2 
       a(href="/posts/#{post.slug}")= post.title
     p= body_preview(post.body)
-    small On #{post.created_at} by #{post.author}
+    small On #{post.created_at} by 
+      a(href="/users/#{post.author}")= post.author
     +categories_tags(post.categories)
 
 mixin errors(errors)

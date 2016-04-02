@@ -7,11 +7,11 @@ block content
     img.post_image(src="#{post.image}", alt="post.title")
     h2.post_body=post.body
 
-    form(action="/posts/#{post.slug}/delete" method="post" class="delete_form")
-      input(type="hidden" name="slug" value="#{post.slug}")
-      input(type="submit" value="Delete" class="delete_button")
-
-    a(href="/posts/#{post.slug}/edit" class="edit_button") Edit
+    if post.author === user.username
+      form(action="/posts/#{post.slug}/delete" method="post" class="delete_form")
+        input(type="hidden" name="slug" value="#{post.slug}")
+        input(type="submit" value="Delete" class="delete_button")
+      a(href="/posts/#{post.slug}/edit" class="edit_button") Edit
 
     p Categories:
     +categories_tags(post.categories)
