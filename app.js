@@ -13,7 +13,7 @@ var session = require('express-session');
 var passport = require("passport");
 var mongoose = require('mongoose');
 
-mongoose.connect("mongodb://localhost/express_post");
+mongoose.connect(process.env.MONGOLAB_URI);
 
 require('./config/passport')(passport);
 
@@ -44,7 +44,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-  secret: "mykey",
+  secret: process.env.SESSION_KEY,
   saveUninitialized: true,
   resave: true
 }));
