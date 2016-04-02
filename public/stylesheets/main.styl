@@ -106,7 +106,13 @@ form.new_category
     background: snow
 
 
-.delete_button
+.delete_form
+  display: inline-block
+  vertical-align: top
+  margin-right: 10px
+
+.delete_button,
+.edit_button
   background: rgba(192, 57, 43, 1)
   border: none
   width: 200px
@@ -114,6 +120,9 @@ form.new_category
   border-radius: 8px
   color: snow
   font-size: 24px
+  display: inline-block
+  box-sizing: border-box
+
   &:hover
     cursor: pointer
 
@@ -130,7 +139,9 @@ form.new_category
   background: rgba(236,100,75, 0.3)  
   color: rgba(150, 40, 27, 1);
 
-
+.edit_button 
+  background: rgba(41, 128, 185,1.0)
+  padding-top: 5px
 
 
 

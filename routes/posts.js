@@ -32,7 +32,7 @@ router.get('/new', function(req, res, next) {
   });
 });
 
-router.post("/delete/:slug", function(req, res, next) {
+router.post("/:slug/delete", function(req, res, next) {
   var slug  = req.body.slug;
 
   Post.remove({slug: slug}, function(err, doc) {
@@ -47,6 +47,47 @@ router.post("/delete/:slug", function(req, res, next) {
   });
 });
 
+router.get("/:slug/edit", function(req, res, next) {
+
+  Post.findOne({slug: req.params["slug"]}, function(err, doc) {
+
+    Category.find({}, function(err2, categories) {
+      res.render("posts_edit", {
+        title: "Editing: " + doc.title,
+        categories: categories,
+        post: doc
+      });
+
+    })
+  });
+});
+
+router.post("/:slug/edit", function(req, res, next) {
+  var title = req.body["title"],
+      image = req.body["image"],
+      body = req.body["body"],
+      old_slug = req.body["slug"],
+      categories = req.body["categories[]"];
+  var slug = slugify(title)
+
+      
+  Post.update( { slug: old_slug }, 
+    {
+      $set: {
+        title: title,
+        image: image,
+        body: body,
+        slug: slug,
+        categories: categories
+      }
+    }, function(err, doc) {
+      req.flash('success', 'Post successfully saved');
+      var redirect_url = "/posts/" + slug
+      res.redirect(redirect_url)
+  });
+
+});
+
 router.get("/:slug", function(req, res, next) {
   Post.findOne({slug: req.params["slug"]}, function(err, doc) {
     res.render("posts_show", {
@@ -55,6 +96,7 @@ router.get("/:slug", function(req, res, next) {
     })
   });
 });
+
 
 
 

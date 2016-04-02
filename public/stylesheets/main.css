@@ -123,7 +123,13 @@ form.new_category textarea {
   padding: 10px 40px;
   background: #fffafa;
 }
-.delete_button {
+.delete_form {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 10px;
+}
+.delete_button,
+.edit_button {
   background: #c0392b;
   border: none;
   width: 200px;
@@ -131,8 +137,11 @@ form.new_category textarea {
   border-radius: 8px;
   color: #fffafa;
   font-size: 24px;
+  display: inline-block;
+  box-sizing: border-box;
 }
-.delete_button:hover {
+.delete_button:hover,
+.edit_button:hover {
   cursor: pointer;
 }
 .flash {
@@ -147,4 +156,8 @@ form.new_category textarea {
 .error_messages {
   background: rgba(236,100,75,0.3);
   color: #96281b;
+}
+.edit_button {
+  background: #2980b9;
+  padding-top: 5px;
 }

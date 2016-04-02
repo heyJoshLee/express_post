@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  h1 Editing #{post.title}
+  form(action="/posts/#{post.slug}/edit" method="post" class="new_post")
+    
+    label(for="title_input") Title
+    input(type="text" name="title" id="title_input" value="#{post.title}" required)
+    
+    br 
+
+    label(for="image_input") Image URL
+    input(type="url" name="image" id="image_input" value="#{post.image}")
+    
+    br
+
+    label(for="body_input") Body 
+    textarea(name="body" id="body_input" required)= post.body
+
+    input(type="hidden" name="slug" value="#{post.slug}")
+
+
+    each category in categories
+        label.category_tag= category.name
+          if post.categories.indexOf(category.name) != -1 
+            input(type="checkbox" name="categories[]" value="#{category.name}" checked)
+          else
+            input(type="checkbox" name="categories[]" value="#{category.name}")
+
+
+    input(type="submit" value="Submit Post" class="green_bkg")
+
