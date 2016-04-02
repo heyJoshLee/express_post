@@ -35,7 +35,7 @@ mixin post_preview(post)
       a(href="/posts/#{post.slug}")= post.title
     p= body_preview(post.body)
     small On #{post.created_at} by 
-      a(href="/users/#{post.author}")= post.author
+      a(href="/users/#{post.author}" class="blue")= post.author
     +categories_tags(post.categories)
 
 mixin errors(errors)

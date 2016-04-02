@@ -1,6 +1,6 @@
 extends layout
 
 block content
-  h1 All Posts by #{preview_user}
+  h1 All Posts by #{user.username}
   each post in posts
     +post_preview(post)

@@ -4,6 +4,12 @@ var Post = require("../models/post.js");
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) { return next() }
+    req.flash('error', 'You need to be logged in to do that');
+    res.redirect("/");
+}
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -65,7 +71,6 @@ router.get("/logout", function(req, res, next) {
   res.redirect("/");
 });
 
-
 router.post("/login", function(req, res, next) {
   var username = req.body.username,
       password = req.body.password;
@@ -78,5 +83,22 @@ router.post("/login", function(req, res, next) {
       })(req, res, next);
 });
 
+router.get("/new", function(req, res, next) {
+  res.redirect("/posts/new");
+});
+
+router.get("/profile", isLoggedIn, function(req, res, next) {
+  Post.find({ author: req.user.username}, function(err, doc) {
+    if (err) {
+      console.log(err);
+      return;
+    } else {
+      res.render("profile", {
+        posts: doc
+      });
+    }
+  });
+
+});
 
 module.exports = router;

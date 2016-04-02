@@ -45,6 +45,9 @@ button
   background: rgba(46, 204, 113,1.0)
   color: snow
   
+.blue 
+  color: #3498db
+  
 form.new_post,
 form.new_category,
 form.register,
@@ -56,6 +59,8 @@ form.login
     font-size: 24px
     &.category_tag
       display: inline-block
+    &:hover
+      cursor: pointer
   input
     width: 100%
     border-radius: 8px
@@ -68,6 +73,7 @@ form.login
     &[type="submit"]
       margin-top: 10px
       height: 40px
+  
   textarea
     display: block
     width: 100%
@@ -103,6 +109,7 @@ form.register
 
 .categories_tags
   small
+    color: #3498db;
     +
       small
         margin-left: 10px

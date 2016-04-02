@@ -5,6 +5,12 @@ var Post = require("../models/post.js");
 
 /* GET home page. */
 
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) { return next() }
+    req.flash('error', 'You need to be logged in to do that');
+    res.redirect("/");
+}
+
 router.get("/", function(req, res, next) {
   Category.find({}, function(err, doc) {
     if (err) {
@@ -12,18 +18,17 @@ router.get("/", function(req, res, next) {
       return;
     } else {
       res.render("categories_index", {
-        categories: doc,
-        user: req.session.user
-      });
+        categories: doc      
+    });
     }
   });
 });
 
-router.get('/new', function(req, res, next) {
+router.get('/new', isLoggedIn, function(req, res, next) {
   res.render("categories_new");
 });
 
-router.post('/new', function(req, res, next) {
+router.post('/new', isLoggedIn, function(req, res, next) {
   var name = req.body["name"];
 
   Category.create({name: name}, function(err, doc) {

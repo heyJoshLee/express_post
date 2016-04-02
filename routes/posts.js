@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Post = require("../models/post.js");
 var Category = require("../models/category.js");
-
+var helpers = require("../helpers.js");
 /* Redirect to home page. */
 
 
@@ -12,13 +12,18 @@ function slugify(title) {
   return slugged;
 }
 
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) { return next() }
+    req.flash('error', 'You need to be logged in to do that');
+    res.redirect("/");
+}
+
 router.get("/", function(req, res, next) {
   res.redirect("/");
 });
 
-
 // Show new form
-router.get('/new', function(req, res, next) {
+router.get('/new', isLoggedIn, function(req, res, next) {
   Category.find({}, function(err, doc) {
     if (err) {
       console.log(err);
@@ -32,7 +37,7 @@ router.get('/new', function(req, res, next) {
   });
 });
 
-router.post("/:slug/delete", function(req, res, next) {
+router.post("/:slug/delete", isLoggedIn, function(req, res, next) {
   var slug  = req.body.slug;
 
   Post.remove({slug: slug}, function(err, doc) {
@@ -47,7 +52,7 @@ router.post("/:slug/delete", function(req, res, next) {
   });
 });
 
-router.get("/:slug/edit", function(req, res, next) {
+router.get("/:slug/edit", isLoggedIn, function(req, res, next) {
 
   Post.findOne({slug: req.params["slug"]}, function(err, doc) {
 
@@ -62,7 +67,7 @@ router.get("/:slug/edit", function(req, res, next) {
   });
 });
 
-router.post("/:slug/edit", function(req, res, next) {
+router.post("/:slug/edit", isLoggedIn, function(req, res, next) {
   var title = req.body["title"],
       image = req.body["image"],
       body = req.body["body"],
@@ -97,11 +102,8 @@ router.get("/:slug", function(req, res, next) {
   });
 });
 
-
-
-
 // Create new Post
-router.post("/new", function(req, res, next) {
+router.post("/new", isLoggedIn, function(req, res, next) {
   
   var title = req.body["title"],
       image = req.body["image"],

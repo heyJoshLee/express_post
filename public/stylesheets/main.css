@@ -51,6 +51,9 @@ button {
   background: #2ecc71;
   color: #fffafa;
 }
+.blue {
+  color: #3498db;
+}
 form.new_post,
 form.new_category,
 form.register,
@@ -70,6 +73,12 @@ form.new_category label.category_tag,
 form.register label.category_tag,
 form.login label.category_tag {
   display: inline-block;
+}
+form.new_post label:hover,
+form.new_category label:hover,
+form.register label:hover,
+form.login label:hover {
+  cursor: pointer;
 }
 form.new_post input,
 form.new_category input,
@@ -134,6 +143,9 @@ form.register input[type="submit"] {
   content: "";
   display: block;
   clear: both;
+}
+.categories_tags small {
+  color: #3498db;
 }
 .categories_tags small + small {
   margin-left: 10px;
