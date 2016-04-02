@@ -13,7 +13,7 @@ var session = require('express-session');
 var passport = require("passport");
 var mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect(process.env.MONGOLAB_URI);
 
 require('./config/passport')(passport);
 
