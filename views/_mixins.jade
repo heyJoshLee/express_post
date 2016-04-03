@@ -40,10 +40,10 @@ mixin post_preview(post)
 
 mixin errors(errors)
   if errors
-        .error_messages.flash
-          ul
-            each error in errors
-               li= error.msg
+    .error_messages.flash
+      ul
+        each error in errors
+           li= error.msg
 
 mixin flash_messages(success_messages, error_messages)
   if (success_messages && success_messages.length > 0)
