@@ -108,7 +108,7 @@ router.post("/new", isLoggedIn, function(req, res, next) {
   var title = req.body["title"],
       image = req.body["image"],
       body = req.body["body"],
-      categories = req.body["categories[]"]
+      categories = req.body["categories"]
       
   var slug = slugify(title);
 
