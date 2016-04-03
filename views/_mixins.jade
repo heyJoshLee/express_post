@@ -23,9 +23,9 @@ mixin button(text, clas)
 
 mixin categories_tags(categories)
   .categories_tags
-        each category in categories
-            small 
-              a.category_tag(href="/categories/#{category}")= category
+    each category in categories
+        small 
+          a.category_tag(href="/categories/#{category}")= category
 
 mixin post_preview(post)
   .post_preview
