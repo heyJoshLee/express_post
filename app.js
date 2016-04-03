@@ -13,7 +13,7 @@ var session = require('express-session');
 var passport = require("passport");
 var mongoose = require('mongoose');
 
-mongoose.connect("mongodb://heroku_srbf4b0d:Abc123@ds011830.mlab.com:11830/heroku_srbf4b0d");
+mongoose.connect("mongodb://heroku_dpd9wtsb:du58pq61psqk3l3kjscfphrdgu@ds015859.mlab.com:15859/heroku_dpd9wtsb");
 
 require('./config/passport')(passport);
 
