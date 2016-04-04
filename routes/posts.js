@@ -72,7 +72,7 @@ router.post("/:slug/edit", isLoggedIn, function(req, res, next) {
       image = req.body["image"],
       body = req.body["body"],
       old_slug = req.body["slug"],
-      categories = req.body["categories[]"];
+      categories = req.body["categories"];
   var slug = slugify(title)
 
       
